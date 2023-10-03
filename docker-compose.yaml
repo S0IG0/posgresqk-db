@@ -1,0 +1,13 @@
+version: 3.2.47
+
+services:
+  database:
+    env_file:
+      - .env
+    container_name: Postgresql-dataset
+    image: postgres:14-alpine3.17
+    volumes:
+      - ./dataset.csv:/dataset.csv
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5433:5432"
